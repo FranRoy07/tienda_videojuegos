@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Videojuegos</title>
-</head>
-<body>
-    <h1>Bienvenido a la Tienda de Videojuegos</h1>
-    <p>Explora nuestro catálogo y disfruta</p>
-    
-    <footer>
-        <p>© 2026 Tienda de Videojuegos</p>
-        <a href="{% url 'contacto' %}">contacto</a>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static%}
+
+<!-- index.html-->
+{% block title %} Tienda de Videojuegos - Inicio {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-body">Bienvenido a la Tienda de Videojuegos</h1>
+    <p class="text-body">Descubra nuestro catálogo y disfrute de las mejores ofertas</p>
+
+    <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid my-4">
+
+    <div class="alert alert-primary">¡Nueva colección de videojuegos disponibles muy pronto!</div>
+    <div class="alert alert-warning">Recuerde revisar las restricciones de edad para algunos de los títulos que ofrecemos</div>
+    <div class="alert alert-danger">Algunos productos tienen stock limitado, ¡apresúrate!</div>
+
+</div>
+{% endblock %}

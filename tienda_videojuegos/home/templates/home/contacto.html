@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Tienda de Videojuegos</title>
-</head>
-<body>
-    <h1>Contacto</h1>
-    <p>Envía un correo a contacto-tiendavideojuegos@gmail.com</p>
-    
-    <footer>
-        <p>© 2026 Tienda de Videojuegos</p>
-        <a href="{% url 'home' %}">Inicio</a>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+<!--contacto.html--> 
+
+{% block title %}Contacto - Tienda de Videojuegos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-body">Contacto</h1>
+    <p class="text-body">Envía un correo a <a href="mailtdv.contacto@gmail.com" class="text-body">contacto@tiendavideojuegos.com</a></p>
+
+
+    <div class="alert alert-primary">Estamos disponibles de Lunes a Viernes de 08:00 a 17:00.</div>
+    <div class="alert alert-warning">El tiempo de respuesta puede variar según la demanda</div>
+    <div class="alert alert-danger">No envíes información sensible por este formulario.</div>
+
+</div>
+{% endblock %}
