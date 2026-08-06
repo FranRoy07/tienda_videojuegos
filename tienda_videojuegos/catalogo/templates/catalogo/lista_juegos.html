@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- lista_juegos.html -->
+
+{% block title %} De Todo Juegos - Catálogo {% endblock %}
+
+    {% block content %}
+        <h2 class="text-body">Lista de Juegos</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+            {% for juego in lista_juegos %} <!--juego es cada uno de los diccionarios de la lista de todos los juegos agregados en el VIEWS-->
+                                           <!--en cada vuelta del bucle for va a generar la estructura completa: cargar imagen, titulo h5, nombre del juego, plataforma y precio (iterar las claves del diccionario de contexto)-->
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{% static 'img/logo.png' %}" alt="Imágen genérica" class="card-img-top"> <!--por ahora muestra solo el logo de manera genérica, no muestra la de cada juego (falta bdd)-->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ juego.nombre }}</h5>
+                            <p class="card-text">Plataforma: {{ juego.plataforma }}</p>
+                            <p class="card-text">Precio: {{ juego.precio }}</p>
+                        </div>
+                    </div>
+
+                </div>    
+            {% endfor %}
+
+        </div>
+
+
+
+    {% endblock %}
