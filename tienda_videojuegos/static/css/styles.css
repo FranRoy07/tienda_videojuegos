@@ -1,0 +1,229 @@
+/* ==============================
+    VARIABLES
+============================== */
+
+:root {
+
+    --transition: .25s ease;
+
+    --header-height: 72px;
+
+    --border-radius: 14px;
+
+}
+
+/* ==============================
+    GENERAL
+============================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+main {
+
+    flex: 1;
+
+    padding-top: 2rem;
+
+    padding-bottom: 2rem;
+
+}
+
+/* ==============================
+    HEADER
+============================== */
+
+.navbar {
+
+    min-height: var(--header-height);
+
+    backdrop-filter: blur(12px);
+
+    transition: var(--transition);
+
+}
+
+.navbar-brand {
+
+    font-size: 1.45rem;
+
+    letter-spacing: .5px;
+
+}
+
+.nav-link {
+
+    position: relative;
+
+    font-weight: 500;
+
+    transition: var(--transition);
+
+}
+
+.nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -4px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--bs-primary);
+
+    transition: .3s;
+
+}
+
+.nav-link:hover::after {
+
+    width: 100%;
+
+}
+
+/* ==============================
+    BUSCADOR
+============================== */
+
+.form-control {
+
+    border-radius: 50rem;
+
+}
+
+.form-control:focus {
+
+    box-shadow: none;
+
+}
+
+/* ==============================
+    BOTÓN TEMA
+============================== */
+
+.btn-theme {
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: .3s;
+
+}
+
+.btn-theme:hover {
+
+    transform: rotate(20deg);
+
+}
+
+.theme-icon {
+
+    transition: .3s;
+
+}
+
+/* ==============================
+    TARJETAS
+============================== */
+
+.card {
+
+    border: none;
+
+    border-radius: var(--border-radius);
+
+    transition: .25s;
+
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 .8rem 2rem rgba(0,0,0,.08);
+
+}
+
+/* ==============================
+    BOTONES
+============================== */
+
+.btn {
+
+    border-radius: 12px;
+
+}
+
+/* ==============================
+    FOOTER
+============================== */
+
+footer {
+
+    margin-top: auto;
+
+}
+
+footer a {
+
+    transition: .25s;
+
+}
+
+footer a:hover {
+
+    color: var(--bs-primary) !important;
+
+}
+
+footer i {
+
+    transition: .25s;
+
+}
+
+footer i:hover {
+
+    transform: scale(1.15);
+
+}
+
+/* ==============================
+    MODO OSCURO
+============================== */
+
+[data-bs-theme="dark"] .navbar {
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+[data-bs-theme="dark"] .card:hover {
+
+    box-shadow: 0 .8rem 2rem rgba(0,0,0,.45);
+
+}

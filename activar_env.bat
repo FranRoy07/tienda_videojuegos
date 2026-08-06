@@ -36,5 +36,4 @@ if exist "%ENV_PATH%\Scripts\activate.bat" (
         exit /b 1
     )
 )
-
 endlocal

@@ -4,7 +4,10 @@
 <html lang="es" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Tienda de Videojuegos {% endblock %}</title>
+    <title>{% block title %}De Todo Juegos {% endblock %}</title>
+
+    <!-- Icono Pestaña Navegador -->
+    <link rel="icon" type="image/png" href="{% static 'img/rubik.png' %}">
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -12,28 +15,99 @@
     
     <!-- Iconos Modo Claro/Oscuro -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Iconos del diseño mejorado -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="bg-body text-body">
     <!-- Botón Modo Oscuro/Claro -->
-   <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'home' %}">
-                🎮 Tienda de Videojuegos
-             </a>
+<header class="sticky-top border-bottom bg-body-tertiary shadow-sm">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
 
-             <button
-                id="theme-toggle"
-                class="btn btn-outline-secondary rounded-circle"
-                type="button">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold fs-4" href="{% url 'home' %}">
+                🎮 De Todo Juegos
+            </a>
 
-                <i class="fa-solid fa-moon theme-icon"></i>
-
+            <!-- Responsive -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+                <!-- Navegación -->
+                <ul class="navbar-nav ms-4 me-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Catálogo
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Ofertas
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Novedades
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+                <!-- Buscador -->
+                <form class="d-flex me-3" role="search">
+
+                    <input
+                        class="form-control"
+                        type="search"
+                        placeholder="Buscar juegos...">
+
+                </form>
+
+                <!-- Acciones -->
+                <div class="d-flex align-items-center gap-2">
+
+                    <button
+                        id="theme-toggle"
+                        class="btn btn-theme rounded-circle"
+                        type="button"
+                        aria-label="Cambiar modo"
+                        aria-pressed="false"
+                        title="Cambiar modo">
+
+                        <i class="bi bi-moon-stars-fill fs-5 theme-icon"></i>
+
+                    </button>
+                </div>
+
             </div>
-        </nav>
-    </header>
+
+        </div>
+    </nav>
+</header>
 
     <main class="container py-4">
         {% block content %}
@@ -43,11 +117,116 @@
         {% endblock %}
     </main>
 
-    <footer class="text-center mt-5 mb-3">
-        <p>© 2026 Tienda de Videojuegos</p>
-        <a href="{% url 'home' %}" class="text-body">Inicio</a>
-        <a href="{% url 'contacto' %}" class="text-body ms-3">Contacto</a>
-    </footer>
+<footer class="border-top bg-body-tertiary mt-5">
+
+    <div class="container py-5">
+
+        <div class="row gy-4">
+
+            <!-- Marca -->
+            <div class="col-lg-4">
+
+                <h5 class="fw-bold">
+                <i class="bi bi-controller me-2"> De Todo Juegos</i>
+                </h5>
+
+                <p class="text-body-secondary">
+
+                    Tu tienda online para descubrir los mejores videojuegos,
+                    ofertas y próximos lanzamientos.
+
+                </p>
+
+            </div>
+
+            <!-- Navegación -->
+            <div class="col-6 col-lg-2">
+
+                <h6 class="fw-semibold">
+                    Navegación
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="{% url 'home' %}" class="text-body-secondary text-decoration-none">Inicio</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Catálogo</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Ofertas</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Novedades</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Ayuda -->
+            <div class="col-6 col-lg-3">
+
+                <h6 class="fw-semibold">
+                    Ayuda
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="{% url 'contacto' %}" class="text-body-secondary text-decoration-none">Contacto</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Preguntas Frecuentes</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Términos y Condiciones</a></li>
+                    <li><a href="#" class="text-body-secondary text-decoration-none">Política de Privacidad</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Redes -->
+            <div class="col-lg-3">
+
+                <h6 class="fw-semibold">
+                    Seguinos
+                </h6>
+
+                <div class="d-flex gap-3 fs-4">
+
+                    <a href="#" class="text-body-secondary">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="text-body-secondary">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+
+                    <a href="#" class="text-body-secondary">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="text-body-secondary">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+
+            <small class="text-body-secondary">
+
+                © 2026 De Todo Juegos. Todos los derechos reservados.
+
+            </small>
+
+            <small class="text-body-secondary">
+
+                Desarrollado con Django + Bootstrap 5.3
+
+            </small>
+
+        </div>
+
+    </div>
+
+</footer>
     
     <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
