@@ -27,6 +27,66 @@
 
         </div>
 
+        <!--Paginación-->
+
+        <!--Botones 'Primera' y 'Anterior'-->
+        <nav aria-label="Paginación" class="mt-4">
+            <ul class="pagination justify-content-center">
+                    {% if lista_juegos.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">Primera</a>
+                    </li>
+
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ lista_juegos.previous_page_number }}">Anterior</a>
+                    </li>
+
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Primera</span>
+                    </li>
+
+                    <li class="page-item disabled">
+                        <span class="page-link">Anterior</span>
+                    </li>                
+                    {% endif %}
+
+        <!--Botones números de las páginas-->
+                {% for num in lista_juegos.paginator.page_range %}
+                {% if lista_juegos.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                
+                {% elif num > lista_juegos.number|add:'-3' and num < lista_juegos.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+
+                {% endif %}
+                {% endfor %}
+
+        <!--Botones "Siguiente" y "Última"-->
+                {% if lista_juegos.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ lista_juegos.next_page_number }}">Siguiente</a>
+                 </li>
+
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ lista_juegos.paginator.num_pages }}">Última</a>
+                </li>
+
+                {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link">Siguiente</span>
+                </li>
+
+                <li class="page-item disabled">
+                    <span class="page-link">Última</span>
+                </li>                
+                {% endif %}                
 
 
+            </ul>
+        </nav>
     {% endblock %}

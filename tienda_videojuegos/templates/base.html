@@ -46,31 +46,31 @@
                 <ul class="navbar-nav ms-4 me-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'home' %}">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
                             Inicio
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link {% if '/catalogo/' in request.path %}active{% endif %}" href="{% url 'lista_juegos' %}">
                             Catálogo
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link {% if '/ofertas/' in request.path %}active{% endif %}" href="#">
                             Ofertas
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link {% if '/novedades/' in request.path %}active{% endif %}" href="#">
                             Novedades
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contacto' %}">
+                        <a class="nav-link {% if '/contacto/' in request.path %}active{% endif %}" href="{% url 'contacto' %}">
                             Contacto
                         </a>
                     </li>
@@ -127,7 +127,7 @@
             <div class="col-lg-4">
 
                 <h5 class="fw-bold">
-                <i class="bi bi-controller me-2"> De Todo Juegos</i>
+                <i class="text-body bi bi-controller me-2"> De Todo Juegos</i>
                 </h5>
 
                 <p class="text-body-secondary">
@@ -139,28 +139,10 @@
 
             </div>
 
-            <!-- Navegación -->
-            <div class="col-6 col-lg-2">
-
-                <h6 class="fw-semibold">
-                    Navegación
-                </h6>
-
-                <ul class="list-unstyled">
-
-                    <li><a href="{% url 'home' %}" class="text-body-secondary text-decoration-none">Inicio</a></li>
-                    <li><a href="#" class="text-body-secondary text-decoration-none">Catálogo</a></li>
-                    <li><a href="#" class="text-body-secondary text-decoration-none">Ofertas</a></li>
-                    <li><a href="#" class="text-body-secondary text-decoration-none">Novedades</a></li>
-
-                </ul>
-
-            </div>
-
             <!-- Ayuda -->
             <div class="col-6 col-lg-3">
 
-                <h6 class="fw-semibold">
+                <h6 class="text-body fw-semibold">
                     Ayuda
                 </h6>
 
@@ -178,7 +160,7 @@
             <!-- Redes -->
             <div class="col-lg-3">
 
-                <h6 class="fw-semibold">
+                <h6 class="text-body fw-semibold">
                     Seguinos
                 </h6>
 
