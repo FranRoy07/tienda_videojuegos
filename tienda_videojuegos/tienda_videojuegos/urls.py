@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     #URLS agregadas
+    
     path('', include('home.urls')),
     path('catalogo/', include('catalogo.urls')),
     

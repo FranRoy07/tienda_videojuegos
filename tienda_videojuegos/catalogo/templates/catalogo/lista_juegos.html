@@ -12,7 +12,9 @@
                                            <!--en cada vuelta del bucle for va a generar la estructura completa: cargar imagen, titulo h5, nombre del juego, plataforma y precio (iterar las claves del diccionario de contexto)-->
                 <div class="col">
                     <div class="card h-100">
-                        <img src="{% static 'img/logo.png' %}" alt="Imágen genérica" class="card-img-top"> <!--por ahora muestra solo el logo de manera genérica, no muestra la de cada juego (falta bdd)-->
+
+                        <!--usar dos etiquetas DTL, con uno va a la carpeta donde están las portadas y con el otro el nombre de la imagen que se guarda en la BDD en el campo 'imagen' -->
+                        <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" class= "card-img-top" alt="Imagen genérica">
                         <div class="card-body">
                             <h5 class="card-title">{{ juego.nombre }}</h5>
                             <p class="card-text">Plataforma: {{ juego.plataforma }}</p>
