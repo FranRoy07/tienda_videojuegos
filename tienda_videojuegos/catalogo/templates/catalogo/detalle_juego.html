@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ juego.nombre }}{% endblock %} <!--Es lo que aparece en la pestaña-->
+
+{% block content %}
+    <div class="container py-5">
+        <div class="row g-5 align-items-start">
+
+            <!--Columna izquierda: imagen del juego-->
+            <div class="col-12 col-md-4">
+                <div class="card shadow-sm border-0 overflow-hidden">
+                    <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" class="detalle-img rounded-3 img-fluid" alt="Imagen del juego {{ juego.nombre }}">
+                </div>
+            </div>
+
+            <!--Columna derecha: Información del juego-->
+            <div class="col-12 col-md-8 text-start">
+
+                <!--Nombre del juego-->        
+                <h1 class="display-5 fq-bold mb-3 text-body">{{ juego.nombre }}</h1>
+
+                <!--Precio destacado-->
+                <div class="mb-4">
+                    <h2 class="text-success fw-bold">${{ juego.precio }}</h2>
+                    <small class="text-body-secondary">Impuestos incluidos</small>
+                </div>
+
+                <!--Plataforma-->
+                <p class="text-body mb-4"><strong>Disponible en:</strong> {{ juego.plataforma }}</p>
+
+                <!--Botones de acción principales-->
+                <div class="d-flex flex-column flex-sm-row gap-3 mb-5">
+                    <a href="#"
+                        class="btn btn-success btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="fas fa-shopping-cart me-2"></i>Comprar
+                    </a>
+
+                    <button 
+                        class="btn btn-outline-danger btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                        <i class="fas fa-heart me-2"></i>Agregar a favoritos
+                    </button>
+
+                    <a href="{% url 'lista_juegos' %}"
+                        class="btn btn-secondary btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center mt-3 mt-sm-0">
+                        <i class="fas fa-arrow-left me-2"></i>Volver al catálogo
+                    </a>
+                </div>
+
+                <!--Detalles del producto-->
+                <div class="mb-5">
+                    <h5 class="fw-semibold mb-3 text-body">Detalles del producto</h5>
+                    <p class="mb-1 text-body"><strong>Plataforma:</strong>{{ juego.plataforma }}</p>
+
+                    {% if juego.descripcion %}
+                    <p class="text-body text-body-secondary">{{ juego.descripcion }}</p>
+                    {% endif %}
+                </div>
+
+                <!--Reseñas-->
+                <div>
+                    <h4 class="fw-semibold mb-3 text-body">Reseñas</h4>
+                    <p class="text-body text-body-secondary fst-italic">Sección de reseñas de usuarios pendiente de implementación.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
