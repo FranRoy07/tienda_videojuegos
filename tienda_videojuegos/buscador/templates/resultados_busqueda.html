@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resultados de búsqueda{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="mb-4 text-body">Resultados para "{{ query }}"</h2>
+        
+        {% if lista_juegos %}
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+                {% for juego in lista_juegos %} 
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <a href="{% url 'detalle_juego' juego.id %}" class="text-decoration-none text body">
+                                <img src="{% static 'img/portadas/'|add:juego.imagen %}" 
+                                class= "card-img-top" alt="{{ juego.nombre }}">
+                                <div class="card-body text-start">
+                                    <h5 class="card-title">{{ juego.nombre }}</h5>
+                                    <p class="card-text">{{ juego.plataforma }}</p>
+                                    <p class="card-text fw-bold">{{ juego.precio }}</p>
+                                </div>
+                            </a>    
+                        </div>
+                    </div>    
+                {% endfor %}
+            </div>
+
+            <!--Paginación tipo Bootstrap-->
+            <!--Botón 'Anterior'-->
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                        {% if lista_juegos.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?q= {{ query }}&page={{ lista_juegos.previous_page_number }}">Anterior</a>
+                        </li>
+
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">Anterior</span>
+                        </li>
+                        {% endif %}
+            <!--Botones números de las páginas-->
+                    {% for num in lista_juegos.paginator.page_range %}
+                    {% if lista_juegos.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                    
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?q={{ query }}&page={{ num }}">{{ num }}</a>
+                    </li>
+
+                    {% endif %}
+                    {% endfor %}
+
+            <!--Botón "Siguiente"-->
+                    {% if lista_juegos.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?q={{ query }}&page={{ lista_juegos.next_page_number }}">Siguiente</a>
+                    </li>
+
+                    {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Siguiente</span>
+                    </li>
+                
+                    {% endif %}                
+
+                </ul>
+            </nav>
+        {% else %}
+            <p class="text-center mt-4 text-body">No se encontraron resultados</p>
+        {% endif %}
+    </div>
+{% endblock %}

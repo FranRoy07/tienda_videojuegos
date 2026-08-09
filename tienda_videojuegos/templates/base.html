@@ -78,12 +78,17 @@
                 </ul>
 
                 <!-- Buscador -->
-                <form class="d-flex me-3" role="search">
+                <form class="d-flex me-3" role="search" action="{% url 'buscar_juegos' %}" method="get">
 
                     <input
-                        class="form-control"
+                        class="form-control me-2"
                         type="search"
-                        placeholder="Buscar juegos...">
+                        name="q"
+                        placeholder="Buscar juegos..."
+                        aria-label="Buscar"
+                        value="{{ request.GET.q|default:'' }}">
+
+                        <button class="btn btn-outline-info" type="submit">Buscar</button>
 
                 </form>
 
