@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<h2 class="text-body">Bienvenido, {{ user.username }}</h2>
+<p class="text-body">Email: {{ user.email }}</p>
+<a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>
+{% endblock %}

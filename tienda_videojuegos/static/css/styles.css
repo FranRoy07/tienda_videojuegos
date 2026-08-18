@@ -227,3 +227,35 @@ footer i:hover {
     box-shadow: 0 .8rem 2rem rgba(0,0,0,.45);
 
 }
+/* ==============================
+    Usuario / Invitado
+============================== */
+
+.avatar-sm {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    flex-shrink: 0;
+}
+
+.avatar-image {
+    display: block;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    object-fit: cover;
+}
+
+.avatar-authenticated {
+    background-color: #ffffff;
+}
+
+.avatar-guest {
+    background-color: #eee400;
+}

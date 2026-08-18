@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio de sesión{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4 p-sm-5">
+                    <h2 class="text-center mb-4 fw-bold text-body">Iniciar sesión</h2>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+
+                        <!--Errores generales-->
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-warning">
+                            {{ form.non_field_errors|striptags }}
+                        </div>
+                        {% endif %}
+
+                        <!-- Campo de usuario -->
+                        <div class="mb-3">
+
+                            <label for="{{ form.username.id_for_label }}"
+                            class="form-label">Usuario</label>
+
+                            <input type="text" name="{{ form.username.html_name }}"
+                            id="{{ form.username.id_for_label }}"
+                            class="form-control"
+                            value="{{ form.username.value|default_if_none:'' }}">
+
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.username.errors|striptags }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                         <!-- Campo de contraseña-->
+                        <div class="mb-3">
+
+                            <label for="{{ form.password.id_for_label }}"
+                            class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" name="{{ form.password.html_name }}"
+                                    id="{{ form.password.id_for_label }}"
+                                    class="form-control">
+                                
+                                <span class="input-group-text"
+                                    style="cursor: pointer;"
+                                    onclick="togglePassword('{{ form.password.id_for_label }}')">
+
+                                    <i class="fa fa-eye"
+                                        id="icon-{{ form.password.id_for_label }}"></i>
+                                </span>
+                            </div>
+
+                            {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors|striptags }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    
+                        
+                        <!--Botón de Ingresar-->
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Ingresar
+                            </button>
+                        </div>
+                    </form>
+
+                    <p class="text-center mt-4 text-body">
+                        ¿No tienes una cuenta?
+                        <a href="{% url 'registro' %}" class="link-info fw-semibold">
+                            Registrate
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
