@@ -11,25 +11,36 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# ---------------------------------------------------
+# Ruta base del proyecto
+# ---------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ---------------------------------------------------
+# Determinar entorno: desarrollo o producción
+# ---------------------------------------------------
+# En PythonAnywhere definir DJANGO_PRODUCTION=1 en consola o WSGI
+IS_PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == '1'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# ---------------------------------------------------
+# Cargar variables de entorno
+# ---------------------------------------------------
+ENV_FILE = Path(__file__).resolve().parent.parent.parent / ('.env.production' if IS_PRODUCTION else '.env.development')
+load_dotenv(ENV_FILE)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a$!8x#h==9j)g*y_ez!pwa#-xy_^70f9ac7+o(t3d3ic*mwq@6'
+# ---------------------------------------------------
+# Seguridad y depuración
+# ---------------------------------------------------
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
-
+# ---------------------------------------------------
+# Aplicaciones instaladas
+# ---------------------------------------------------
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +55,9 @@ INSTALLED_APPS = [
     'carrito',
 ]
 
+# ---------------------------------------------------
+# Middleware
+# ---------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,6 +68,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ---------------------------------------------------
+# URLs y WSGI
+# ---------------------------------------------------
 ROOT_URLCONF = 'tienda_videojuegos.urls'
 
 TEMPLATES = [
@@ -74,56 +91,54 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tienda_videojuegos.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+# ---------------------------------------------------
+# Base de datos
+# ---------------------------------------------------
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER', ''),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
+        'HOST': os.getenv('DATABASE_HOST', ''),
+        'PORT': os.getenv('DATABASE_PORT', ''),
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
-
+# ---------------------------------------------------
+# Validación de contraseñas
+# ---------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
-
-LANGUAGE_CODE = 'es-ar'
-
+# ---------------------------------------------------
+# Internacionalización
+# ---------------------------------------------------
+LANGUAGE_CODE = 'es-es'
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
-STATIC_URL = 'static/'
+# ---------------------------------------------------
+# Archivos estáticos
+# ---------------------------------------------------
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# ---------------------------------------------------
+# Configuración de usuarios
+# ---------------------------------------------------
 AUTH_USER_MODEL = 'usuarios.Usuario'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+# ---------------------------------------------------
+# Campo por defecto para PK
+# ---------------------------------------------------
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

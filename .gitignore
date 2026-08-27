@@ -1,4 +1,25 @@
+# Entorno virtual
+env/
+venv/
+
+# Archivos de entorno
+.env
+.env.development
+.env.production
+
+# BDD local
+db.sqlite3
+
+# Archivos compilados
 __pychache__/
 *.pyc
-.env
-db.sqlite3
+*.pyo
+
+# Archivos estáticos recolectados
+/staticfiles/
+
+# Claves o certificados
+*.key
+*.pem
+
+
