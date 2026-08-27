@@ -5,17 +5,84 @@
 {% block title %} De Todo Juegos - Inicio {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-body">Bienvenido a De Todo Juegos</h1>
-    <p class="text-body
-    
-    ">Descubra nuestro catálogo y disfrute de las mejores ofertas</p>
+<div class="home-page">
+    <section class="home-hero mb-5" aria-labelledby="home-title">
+        <div class="home-hero-copy">
+            <span class="home-kicker"><i class="bi bi-stars me-2"></i>Tu próxima partida empieza acá</span>
+            <h1 id="home-title">Jugá más.<br><span>Elegí mejor.</span></h1>
+            <p class="home-lead">Descubrí aventuras inolvidables, clásicos que siempre vuelven y los lanzamientos que todos están esperando.</p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="{% url 'catalogo:lista_juegos' %}" class="btn btn-success btn-lg px-4">
+                    Explorar catálogo <i class="bi bi-arrow-up-right ms-2"></i>
+                </a>
+                <a href="#seleccion" class="btn btn-outline-light btn-lg px-4">
+                    Ver destacados <i class="bi bi-chevron-down ms-2"></i>
+                </a>
+            </div>
+            <div class="home-proof d-flex flex-wrap gap-4 mt-4">
+                <span><i class="bi bi-controller me-2"></i>Para cada tipo de jugador</span>
+                <span><i class="bi bi-shield-check me-2"></i>Compra simple y segura</span>
+            </div>
+        </div>
+        <div class="home-hero-art">
+            {% if juegos_destacados %}
+                <img src="{% static 'img/portadas/' %}{{ juegos_destacados.0.imagen }}" alt="Portada de {{ juegos_destacados.0.nombre }}">
+                <div class="home-hero-tag">
+                    <small>Para empezar</small>
+                    <strong>{{ juegos_destacados.0.nombre }}</strong>
+                    <span>{{ juegos_destacados.0.plataforma }}</span>
+                </div>
+            {% else %}
+                <img src="{% static 'img/portadas/default.jpg' %}" alt="Catálogo de videojuegos">
+            {% endif %}
+        </div>
+    </section>
 
-    <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid my-4">
+    <section class="home-section" id="seleccion" aria-labelledby="selection-title">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+            <div>
+                <span class="section-eyebrow">Selección de la casa</span>
+                <h2 id="selection-title" class="mb-1">Para jugar hoy</h2>
+                <p class="text-body-secondary mb-0">Una selección rápida para encontrar tu próxima obsesión.</p>
+            </div>
+            <a href="{% url 'catalogo:lista_juegos' %}" class="home-link">Ver todo <i class="bi bi-arrow-right"></i></a>
+        </div>
 
-    <div class="alert alert-primary">¡Nueva colección de videojuegos disponibles muy pronto!</div>
-    <div class="alert alert-warning">Recuerde revisar las restricciones de edad para algunos de los títulos que ofrecemos</div>
-    <div class="alert alert-danger">Algunos productos tienen stock limitado, ¡apresúrate!</div>
+        {% if juegos_destacados %}
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+                {% for juego in juegos_destacados %}
+                    <div class="col">
+                        <article class="home-game-card h-100">
+                            <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none">
+                                <div class="home-game-cover">
+                                    <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" alt="Portada de {{ juego.nombre }}" loading="lazy">
+                                    <span class="home-game-platform">{{ juego.plataforma }}</span>
+                                </div>
+                                <div class="home-game-info">
+                                    <h3>{{ juego.nombre }}</h3>
+                                    <div class="d-flex justify-content-between align-items-center gap-2">
+                                        <strong>${{ juego.precio }}</strong>
+                                        <span class="home-card-action">Ver detalle <i class="bi bi-arrow-up-right"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="home-empty-state">
+                <i class="bi bi-controller"></i>
+                <h3>El catálogo se está preparando</h3>
+                <p class="text-body-secondary mb-0">Muy pronto vas a encontrar nuevos títulos para elegir.</p>
+            </div>
+        {% endif %}
+    </section>
 
+    <section class="home-service-strip mt-5" aria-label="Ventajas de la tienda">
+        <div><i class="bi bi-lightning-charge-fill"></i><span><strong>Encontrá tu juego</strong><small>Explorá por plataforma</small></span></div>
+        <div><i class="bi bi-bag-check-fill"></i><span><strong>Armá tu carrito</strong><small>Sumá tus favoritos</small></span></div>
+        <div><i class="bi bi-chat-heart-fill"></i><span><strong>Jugá con ganas</strong><small>Tu próxima historia te espera</small></span></div>
+    </section>
 </div>
 {% endblock %}

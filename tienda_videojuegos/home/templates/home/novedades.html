@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Novedades - De Todo Juegos{% endblock %}
+
+{% block content %}
+<div class="inner-page listing-page">
+    <section class="inner-hero news-hero mb-5" aria-labelledby="news-title">
+        <div>
+            <span class="section-eyebrow">Siempre hay algo nuevo</span>
+            <h1 id="news-title">Nuevas historias<br><span>para descubrir.</span></h1>
+            <p>Explorá los títulos incorporados más recientemente a nuestro catálogo y encontrá una aventura diferente.</p>
+        </div>
+        <i class="bi bi-stars" aria-hidden="true"></i>
+    </section>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+            <span class="section-eyebrow">Últimos ingresos</span>
+            <h2 class="mb-1">Recién llegados</h2>
+            <p class="text-body-secondary mb-0">Lo más nuevo del catálogo, listo para tu próxima partida.</p>
+        </div>
+        <a href="{% url 'catalogo:lista_juegos' %}" class="home-link">Explorar todo <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    {% if juegos_novedades %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+            {% for juego in juegos_novedades %}
+                <div class="col">
+                    <article class="home-game-card h-100">
+                        <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none">
+                            <div class="home-game-cover">
+                                <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" alt="Portada de {{ juego.nombre }}" loading="lazy">
+                                <span class="home-game-platform">{{ juego.plataforma }}</span>
+                                <span class="listing-new-badge"><i class="bi bi-stars me-1"></i>Nuevo</span>
+                            </div>
+                            <div class="home-game-info">
+                                <h3>{{ juego.nombre }}</h3>
+                                <div class="d-flex justify-content-between align-items-center gap-2">
+                                    <strong>${{ juego.precio }}</strong>
+                                    <span class="home-card-action">Ver detalle <i class="bi bi-arrow-up-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="home-empty-state">
+            <i class="bi bi-stars"></i>
+            <h3>Las novedades están por llegar</h3>
+            <p class="text-body-secondary mb-0">Estamos preparando nuevos títulos para vos.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

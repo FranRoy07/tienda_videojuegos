@@ -6,14 +6,50 @@
 {% block title %}Contacto - De Todo Juegos{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-body">Contacto</h1>
-    <p class="text-body">Envía un correo a <a href="mailtdv.contacto@gmail.com" class="text-body">contacto@tiendavideojuegos.com</a></p>
+<div class="inner-page contact-page">
+    <section class="inner-hero contact-hero mb-5" aria-labelledby="contact-title">
+        <div>
+            <span class="section-eyebrow">Estamos para ayudarte</span>
+            <h1 id="contact-title">Hablemos de tu próxima partida.</h1>
+            <p>¿Tenés una consulta sobre un juego, el catálogo o tu compra? Escribinos y te respondemos dentro de nuestro horario de atención.</p>
+        </div>
+        <i class="bi bi-chat-square-heart" aria-hidden="true"></i>
+    </section>
 
+    <div class="row g-4 align-items-stretch">
+        <div class="col-12 col-lg-7">
+            <div class="contact-card h-100">
+                <span class="section-eyebrow">Canal principal</span>
+                <h2>Atención por correo</h2>
+                <p class="text-body-secondary">Contanos qué necesitás con el mayor detalle posible. Así podemos ayudarte más rápido.</p>
+                <a href="mailto:contacto@tiendavideojuegos.com" class="contact-email">
+                    <i class="bi bi-envelope-fill"></i>
+                    contacto@tiendavideojuegos.com
+                    <i class="bi bi-arrow-up-right ms-auto"></i>
+                </a>
+                <p class="small text-body-secondary mb-0">No compartas contraseñas, datos bancarios ni información sensible.</p>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5">
+            <div class="contact-hours h-100">
+                <i class="bi bi-clock-history"></i>
+                <h2>Horario de atención</h2>
+                <p class="mb-1">Lunes a viernes</p>
+                <strong>08:00 a 17:00</strong>
+                <hr>
+                <p class="small mb-0">El tiempo de respuesta puede variar según la demanda.</p>
+            </div>
+        </div>
+    </div>
 
-    <div class="alert alert-primary">Estamos disponibles de Lunes a Viernes de 08:00 a 17:00.</div>
-    <div class="alert alert-warning">El tiempo de respuesta puede variar según la demanda</div>
-    <div class="alert alert-danger">No envíes información sensible por este formulario.</div>
-
+    <section class="contact-topics mt-5" aria-labelledby="topics-title">
+        <span class="section-eyebrow">Antes de escribirnos</span>
+        <h2 id="topics-title">Podemos ayudarte con</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+            <div class="col"><div><i class="bi bi-controller"></i><strong>Información de juegos</strong><small>Plataformas, detalles y disponibilidad.</small></div></div>
+            <div class="col"><div><i class="bi bi-cart-check"></i><strong>Consultas de compra</strong><small>Carrito, productos y pasos a seguir.</small></div></div>
+            <div class="col"><div><i class="bi bi-search"></i><strong>Ayuda para encontrar</strong><small>Te orientamos dentro del catálogo.</small></div></div>
+        </div>
+    </section>
 </div>
 {% endblock %}

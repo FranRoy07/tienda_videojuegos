@@ -7,6 +7,9 @@ urlpatterns = [
     
     # ruta contacto, llama a la vista contacto. 
     path('contacto/', views.contacto, name='contacto'), 
+
+    path('ofertas/', views.ofertas, name='ofertas'),
+    path('novedades/', views.novedades, name='novedades'),
     
 ]
 

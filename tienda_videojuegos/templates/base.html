@@ -63,13 +63,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if '/ofertas/' in request.path %}active{% endif %}" href="#">
+                        <a class="nav-link {% if '/ofertas/' in request.path %}active{% endif %}" href="{% url 'ofertas' %}">
                             Ofertas
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if '/novedades/' in request.path %}active{% endif %}" href="#">
+                        <a class="nav-link {% if '/novedades/' in request.path %}active{% endif %}" href="{% url 'novedades' %}">
                             Novedades
                         </a>
                     </li>
