@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from catalogo.models import Juego, Favorito
 
@@ -34,3 +35,7 @@ def novedades(request):
         'juegos_novedades': juegos_novedades,
         'favoritos_ids': _favoritos_del_usuario(request),
     })
+
+
+def health_check(request):
+    return HttpResponse('ok')
