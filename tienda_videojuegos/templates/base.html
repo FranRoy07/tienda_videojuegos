@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if '/catalogo/' in request.path %}active{% endif %}" href="{% url 'lista_juegos' %}">
+                        <a class="nav-link {% if '/catalogo/' in request.path %}active{% endif %}" href="{% url 'catalogo:lista_juegos' %}">
                             Catálogo
                         </a>
                     </li>
@@ -96,6 +96,22 @@
                         <button class="btn btn-outline-info" type="submit">Buscar</button>
 
                 </form>
+
+                <!-- Carrito -->
+                <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5 me-3">
+                    <li class="nav-item position-relative">
+                        <a href="{% url 'carrito:ver_carrito' %}" class="nav-link text-white">
+                            <div class="position-relative d-inline-block">
+                                <i class="fas fa-shopping-cart fa-lg"></i>
+                                {% if carrito_total_items > 0 %}
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                                            {{ carrito_total_items }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </li>
+                </ul>
 
                 <!-- Usuario/Invitado -->
                 <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5">

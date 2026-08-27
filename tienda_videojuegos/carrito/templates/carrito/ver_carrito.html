@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tu carrito{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-body">
+    <h1 class="mb-4 text-start fw-bold">
+        <i class="fas fa-shopping-cart me-2"></i>Tu carrito
+    </h1>
+
+    {% if items %}
+    <div class="table-responsive rounded-3 mb-4 carrito-table-wrap">
+        <table class="table table-sm align-middle shadow-sm border bg-body text-body mb-0">
+            <thead class="table-light border-bottom">
+                <tr>
+                    <th scope="col">Juego</th>
+                    <th scope="col" class="text-center">Plataforma</th>
+                    <th scope="col" class="text-center">Precio</th>
+                    <th scope="col" class="text-center">Cantidad</th>
+                    <th scope="col" class="text-center">Subtotal</th>
+                    <th scope="col" class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="carrito-row">
+                    <td data-label="Juego" class="d-flex align-items-center gap-3 text-start">
+                        <img src="{% static 'img/portadas/' %}{{ item.juego.imagen }}" alt="{{ item.juego.nombre }}"
+                            class="rounded shadow-sm carrito-thumb" style="width:70px; height:70px; object-fit:cover;">
+                        <span class="fw-semibold">{{ item.juego.nombre }}</span>
+                    </td>
+                    <td data-label="Plataforma" class="text-center">{{ item.juego.plataforma }}</td>
+                    <td data-label="Precio" class="text-center">{{ item.juego.precio }} €</td>
+                    <td data-label="Cantidad" class="text-center">{{ item.cantidad }}</td>
+                    <td data-label="Subtotal" class="text-center fw-semibold">{{ item.subtotal }} €</td>
+                    <td data-label="Acciones" class="text-center">
+                        <a href="{% url 'carrito:eliminar' item.juego.id %}"
+                            class="btn btn-sm btn-outline-danger shadow-sm rounded-pill">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Total y acciones (tarjeta principal) -->
+    <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-4 p-3 bg-body-secondary rounded-3 shadow-sm main-cart-card">
+        <h4 class="fw-bold text-success mb-0">
+            Total: {{ total }} €
+        </h4>
+
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-2">
+            <a href="{% url 'carrito:limpiar' %}" class="btn btn-outline-danger rounded-pill px-3">
+                <i class="fas fa-trash-alt me-2"></i>Vaciar carrito
+            </a>
+            <a href="#" class="btn btn-success rounded-pill px-3">
+                <i class="fas fa-credit-card me-2"></i>Finalizar compra
+            </a>
+            <a href="{% url 'catalogo:lista_juegos' %}" class="btn btn-outline-secondary rounded-pill px-3">
+                <i class="fas fa-arrow-left me-2"></i>Seguir comprando
+            </a>
+        </div>
+    </div>
+    
+
+    {% else %}
+    <div class="alert alert-info bg-body-secondary text-body py-5 text-center shadow-sm border rounded-3">
+        <h4 class="mb-3">
+            <i class="fas fa-info-circle me-2"></i>Tu carrito está vacío
+        </h4>
+        <a href="{% url 'catalogo:lista_juegos' %}" class="btn btn-primary rounded-pill mt-2">
+            <i class="fas fa-gamepad me-2"></i>Explorar el catálogo
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

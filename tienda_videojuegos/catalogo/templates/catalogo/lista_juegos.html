@@ -11,7 +11,7 @@
             {% for juego in lista_juegos %} <!--juego es cada uno de los diccionarios de la lista de todos los juegos agregados en el VIEWS-->
                                            <!--en cada vuelta del bucle for va a generar la estructura completa: cargar imagen, titulo h5, nombre del juego, plataforma y precio (iterar las claves del diccionario de contexto)-->
                 <div class="col">
-                    <a href="{% url 'detalle_juego' juego.id %}" class="text-decoration-none text-dark">
+                    <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-dark">
                         <div class="card h-100 shadow-sm border-0 juego-card">
 
                             <!--usar dos etiquetas DTL, con uno va a la carpeta donde están las portadas y con el otro el nombre de la imagen que se guarda en la BDD en el campo 'imagen' -->

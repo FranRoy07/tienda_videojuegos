@@ -31,7 +31,7 @@
 
                 <!--Botones de acción principales-->
                 <div class="d-flex flex-column flex-sm-row gap-3 mb-5">
-                    <a href="#"
+                    <a href="{% url 'carrito:agregar' juego.id %}"
                         class="btn btn-success btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center">
                         <i class="fas fa-shopping-cart me-2"></i>Comprar
                     </a>
@@ -41,7 +41,7 @@
                         <i class="fas fa-heart me-2"></i>Agregar a favoritos
                     </button>
 
-                    <a href="{% url 'lista_juegos' %}"
+                    <a href="{% url 'catalogo:lista_juegos' %}"
                         class="btn btn-secondary btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center mt-3 mt-sm-0">
                         <i class="fas fa-arrow-left me-2"></i>Volver al catálogo
                     </a>
