@@ -36,10 +36,14 @@
                         <i class="fas fa-shopping-cart me-2"></i>Comprar
                     </a>
 
-                    <button 
-                        class="btn btn-outline-danger btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center">
-                        <i class="fas fa-heart me-2"></i>Agregar a favoritos
-                    </button>
+                    <form method="post" action="{% url 'catalogo:alternar_favorito' juego.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        <button type="submit"
+                            class="btn {% if es_favorito %}btn-danger{% else %}btn-outline-danger{% endif %} btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center">
+                            <i class="fas fa-heart me-2"></i>{% if es_favorito %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}
+                        </button>
+                    </form>
 
                     <a href="{% url 'catalogo:lista_juegos' %}"
                         class="btn btn-secondary btn-md rounded-3 shadow-sm d-flex align-items-center justify-content-center mt-3 mt-sm-0">

@@ -113,6 +113,17 @@
                     </li>
                 </ul>
 
+                <!-- Favoritos -->
+                {% if user.is_authenticated %}
+                    <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5 me-3">
+                        <li class="nav-item">
+                            <a href="{% url 'catalogo:favoritos' %}" class="nav-link {% if '/catalogo/favoritos/' in request.path %}active{% endif %}" aria-label="Mis favoritos" title="Mis favoritos">
+                                <i class="fas fa-heart me-1"></i>Favoritos
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+
                 <!-- Usuario/Invitado -->
                 <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5">
                     <li class="nav-item dropdown">
@@ -309,6 +320,10 @@
 
                     <a href="#" class="text-body-secondary">
                         <i class="bi bi-youtube"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/francisco-roy" class="text-body-secondary" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Francisco Roy" title="LinkedIn de Francisco Roy">
+                        <i class="bi bi-linkedin"></i>
                     </a>
 
                 </div>

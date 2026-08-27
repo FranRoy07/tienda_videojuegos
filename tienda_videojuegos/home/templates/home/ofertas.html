@@ -28,12 +28,19 @@
             {% for juego in juegos_oferta %}
                 <div class="col">
                     <article class="home-game-card h-100">
-                        <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none">
-                            <div class="home-game-cover">
+                        <div class="home-game-cover">
                                 <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" alt="Portada de {{ juego.nombre }}" loading="lazy">
                                 <span class="home-game-platform">{{ juego.plataforma }}</span>
                                 <span class="listing-price-badge">Desde ${{ juego.precio }}</span>
-                            </div>
+                                <form method="post" action="{% url 'catalogo:alternar_favorito' juego.id %}" class="favorite-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                    <button type="submit" class="favorite-button {% if juego.id in favoritos_ids %}is-favorite{% endif %}" aria-label="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}" title="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </form>
+                        </div>
+                        <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none">
                             <div class="home-game-info">
                                 <h3>{{ juego.nombre }}</h3>
                                 <span class="home-card-action">Ver detalle <i class="bi bi-arrow-up-right"></i></span>

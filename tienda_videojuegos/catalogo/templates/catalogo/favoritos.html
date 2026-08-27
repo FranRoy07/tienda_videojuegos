@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mis favoritos - De Todo Juegos{% endblock %}
+
+{% block content %}
+<div class="inner-page listing-page">
+    <section class="inner-hero favorites-hero mb-5" aria-labelledby="favorites-title">
+        <div>
+            <span class="section-eyebrow">Tu colección personal</span>
+            <h1 id="favorites-title">Tus juegos<br><span>para volver.</span></h1>
+            <p>Guardá los títulos que te interesan y tenelos siempre a mano para decidir tu próxima partida.</p>
+        </div>
+        <i class="bi bi-heart-fill" aria-hidden="true"></i>
+    </section>
+
+    <div class="d-flex justify-content-between align-items-end gap-3 mb-4">
+        <div>
+            <span class="section-eyebrow">Lista guardada</span>
+            <h2 class="mb-1">Mis favoritos</h2>
+            <p class="text-body-secondary mb-0">{{ favoritos|length }} juego{{ favoritos|length|pluralize }} guardado{{ favoritos|length|pluralize }}.</p>
+        </div>
+        <a href="{% url 'catalogo:lista_juegos' %}" class="home-link">Seguir explorando <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    {% if favoritos %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+            {% for favorito in favoritos %}
+                <div class="col">
+                    <article class="home-game-card h-100">
+                        <div class="home-game-cover">
+                            <img src="{% static 'img/portadas/' %}{{ favorito.juego.imagen }}" alt="Portada de {{ favorito.juego.nombre }}" loading="lazy">
+                            <span class="home-game-platform">{{ favorito.juego.plataforma }}</span>
+                            <form method="post" action="{% url 'catalogo:alternar_favorito' favorito.juego.id %}" class="favorite-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <button type="submit" class="favorite-button is-favorite" aria-label="Quitar de favoritos" title="Quitar de favoritos"><i class="fas fa-heart"></i></button>
+                            </form>
+                        </div>
+                        <a href="{% url 'catalogo:detalle_juego' favorito.juego.id %}" class="text-decoration-none">
+                            <div class="home-game-info">
+                                <h3>{{ favorito.juego.nombre }}</h3>
+                                <div class="d-flex justify-content-between align-items-center gap-2">
+                                    <strong>${{ favorito.juego.precio }}</strong>
+                                    <span class="home-card-action">Ver detalle <i class="bi bi-arrow-up-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="home-empty-state">
+            <i class="bi bi-heart"></i>
+            <h3>Todavía no guardaste favoritos</h3>
+            <p class="text-body-secondary">Explorá el catálogo y tocá el corazón para armar tu colección.</p>
+            <a href="{% url 'catalogo:lista_juegos' %}" class="btn btn-success mt-2">Explorar catálogo <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

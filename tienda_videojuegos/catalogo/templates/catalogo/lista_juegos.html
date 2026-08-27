@@ -11,21 +11,28 @@
             {% for juego in lista_juegos %} <!--juego es cada uno de los diccionarios de la lista de todos los juegos agregados en el VIEWS-->
                                            <!--en cada vuelta del bucle for va a generar la estructura completa: cargar imagen, titulo h5, nombre del juego, plataforma y precio (iterar las claves del diccionario de contexto)-->
                 <div class="col">
-                    <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-dark">
-                        <div class="card h-100 shadow-sm border-0 juego-card">
+                    <div class="card h-100 shadow-sm border-0 juego-card">
 
                             <!--usar dos etiquetas DTL, con uno va a la carpeta donde están las portadas y con el otro el nombre de la imagen que se guarda en la BDD en el campo 'imagen' -->
                             <img src="{% static 'img/portadas/' %}{{ juego.imagen }}" class= "card-img-top" alt="{{ juego.nombre }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ juego.nombre }}</h5>
-                                <p class="card-text">Plataforma: {{ juego.plataforma }}</p>
-                                <p class="card-text">Precio: ${{ juego.precio }}</p>
-                                <button>
-                                    <i class="fas fa-info-circle"></i> Ver detalles
-                                </button>
+                            <div class="card-body position-relative p-0">
+                                <form method="post" action="{% url 'catalogo:alternar_favorito' juego.id %}" class="favorite-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                    <button type="submit" class="favorite-button {% if juego.id in favoritos_ids %}is-favorite{% endif %}" aria-label="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}" title="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </form>
                             </div>
-                        </div>
-                    </a>
+                        <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-body">
+                            <div class="card-body">
+                                <h5 class="card-title text-body">{{ juego.nombre }}</h5>
+                                <p class="card-text text-body">Plataforma: {{ juego.plataforma }}</p>
+                                <p class="card-text text-body">Precio: ${{ juego.precio }}</p>
+                                <span class="btn btn-outline-info"><i class="fas fa-info-circle"></i> Ver detalles</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>    
             {% endfor %}
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -13,6 +14,32 @@ class Juego(models.Model): #Herencia de modelos para que funcione bien django in
     
     def __str__(self):
         return self.nombre
+
+
+class Favorito(models.Model):
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='favoritos'
+    )
+    juego = models.ForeignKey(
+        Juego,
+        on_delete=models.CASCADE,
+        related_name='favoritos'
+    )
+    creado = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['usuario', 'juego'],
+                name='favorito_usuario_juego_unico'
+            )
+        ]
+        ordering = ['-creado']
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.juego.nombre}"
     
     
     

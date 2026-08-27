@@ -23,12 +23,15 @@ def login_view(request):
             usuario = form.get_user()
             login(request, usuario)
             messages.success(request, "Inicio de sesión correcto.")
+            destino = request.POST.get('next')
+            if destino and destino.startswith('/') and not destino.startswith('//'):
+                return redirect(destino)
             return redirect('home')
         else:
             messages.error(request, "Usuario o contraseña incorrectos.")
     else:
         form = LoginForm()
-    return render(request, 'usuarios/login.html', {'form': form})
+    return render(request, 'usuarios/login.html', {'form': form, 'next': request.GET.get('next', '')})
 
 def logout_view(request):
     logout(request)
