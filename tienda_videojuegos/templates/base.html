@@ -116,9 +116,16 @@
                 <!-- Favoritos -->
                 {% if user.is_authenticated %}
                     <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5 me-3">
-                        <li class="nav-item">
-                            <a href="{% url 'catalogo:favoritos' %}" class="nav-link {% if '/catalogo/favoritos/' in request.path %}active{% endif %}" aria-label="Mis favoritos" title="Mis favoritos">
-                                <i class="fas fa-heart me-1"></i>Favoritos
+                        <li class="nav-item position-relative">
+                            <a href="{% url 'catalogo:favoritos' %}" class="nav-link text-danger" aria-label="Mis favoritos" title="Mis favoritos">
+                                <div class="position-relative d-inline-block">
+                                    <i class="fas fa-heart fa-lg"></i>
+                                    {% if favoritos_total > 0 %}
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">
+                                            {{ favoritos_total }}
+                                        </span>
+                                    {% endif %}
+                                </div>
                             </a>
                         </li>
                     </ul>
