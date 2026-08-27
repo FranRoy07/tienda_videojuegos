@@ -1,0 +1,402 @@
+﻿[
+{
+  "model": "sessions.session",
+  "pk": "gz61tgz9owxoj9fjzz08uukce71reb1u",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hDsDFBcuu8ZmoGZStVAUtqV8e7apAvd_vfef6mRtjWPW5NlnFldFKrT7xYpPaTsgO9UblWnWtZljnpX9EGbHirL83q4fweZWv7W1hgAsN6CAfGdnc6MBjglIde74DkGCmZKPlhE7Lx34MQSRkLkxL16fwCzCjcd:1wzdYq:q59KRMozdMSBCLo74wqbrQfx7XwXlxMeVZ2n1KfssSI",
+    "expire_date": "2026-09-10T17:06:44.229Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hy50h66y3im170r3ruyu89wu9uvy0dbd",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-fyjpOYNl765xADlSnFSIu0OkFNC-mXkvlvK2trQNWtKE7MwsO_1uJcOD-g7wnvtt5jD3dZkK3xV-0MGvM9Lzcrh_By2P9q1DDSC811BJajBYQWqtYinW6ShICGMQYiZFQaFHU1BU4SlYZ5STobL3B-xJN9s:1wzdaz:W8DD1ptj65LrJ1DiLcPWKaPF9J3MYjSOj9I9SxH2lOg",
+    "expire_date": "2026-09-10T17:08:57.170Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "x3p23aye49i72ogzbtsxohuh0gz0m39x",
+  "fields": {
+    "session_data": ".eJxVjE0OwiAYBe_C2hAEKeDSvWdovj-kaiAp7cp4d23ShW7fzLyXGmFdyrh2mceJ1Vk5dfjdEOghdQN8h3prmlpd5gn1puiddn1tLM_L7v4dFOjlW0NwxnuJnJIRBMeZAbNDyGwsoxzzcIqRBzHZJk_IlslYL8l7EwKRen8AGG05IQ:1wzdY3:g5ugXtImpCT4fwvBWLr_dazRzKY4rSiMSKLPWhTMXFU",
+    "expire_date": "2026-09-10T17:05:55.598Z"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 1,
+  "fields": {
+    "nombre": "The Witcher 3: Wild Hunt",
+    "precio": "39.99",
+    "plataforma": "PC",
+    "imagen": "TheWitcherIII.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 2,
+  "fields": {
+    "nombre": "God of War Ragnar÷k",
+    "precio": "69.99",
+    "plataforma": "PlayStation 5",
+    "imagen": "GOWR.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 3,
+  "fields": {
+    "nombre": "Forza Horizon 5",
+    "precio": "59.99",
+    "plataforma": "Xbox Series X/S",
+    "imagen": "ForzaHorizon5.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 4,
+  "fields": {
+    "nombre": "Hollow Knight",
+    "precio": "14.99",
+    "plataforma": "Nintendo Switch",
+    "imagen": "HollowKnight.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 5,
+  "fields": {
+    "nombre": "Cyberpunk 2077",
+    "precio": "49.99",
+    "plataforma": "PC",
+    "imagen": "Cyberpunk.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 6,
+  "fields": {
+    "nombre": "Red Dead Redemption 2",
+    "precio": "59.99",
+    "plataforma": "PC",
+    "imagen": "RedDeadRedemption2.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 7,
+  "fields": {
+    "nombre": "Elden Ring",
+    "precio": "59.99",
+    "plataforma": "PC",
+    "imagen": "EldenRing.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 8,
+  "fields": {
+    "nombre": "Resident Evil 4",
+    "precio": "39.99",
+    "plataforma": "PC",
+    "imagen": "RE4remake.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 9,
+  "fields": {
+    "nombre": "Minecraft",
+    "precio": "29.99",
+    "plataforma": "PC",
+    "imagen": "Minecraft.jpg"
+  }
+},
+{
+  "model": "catalogo.juego",
+  "pk": 10,
+  "fields": {
+    "nombre": "Grand Theft Auto V",
+    "precio": "29.99",
+    "plataforma": "PC",
+    "imagen": "GTAV.jpg"
+  }
+},
+{
+  "model": "usuarios.usuario",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qZeQw6JHI3WQ9XcxoN3jdU$07npn4tW91sqfAHobo5x/jxwNKpswbjIXqR6qPijpD8=",
+    "last_login": "2026-08-27T15:51:49.234Z",
+    "is_superuser": true,
+    "username": "franroy",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-18T03:37:03.918Z",
+    "email": "franchoroy7@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "usuarios.usuario",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$2qLtrdn7Cw0UU1ZzgtyS4L$n8XU0XokoAqXi7pecMwI+7Mfg178Vweqmh93fht8ATM=",
+    "last_login": "2026-08-27T17:07:55.688Z",
+    "is_superuser": false,
+    "username": "test1",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-27T15:50:16.773Z",
+    "email": "test1@gmail.com",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "carrito.carrito",
+  "pk": 1,
+  "fields": {
+    "usuario": [
+      "test1"
+    ],
+    "creado": "2026-08-27T15:50:22.529Z",
+    "actualizado": "2026-08-27T15:50:22.529Z"
+  }
+},
+{
+  "model": "carrito.carrito",
+  "pk": 2,
+  "fields": {
+    "usuario": [
+      "franroy"
+    ],
+    "creado": "2026-08-27T15:52:50.968Z",
+    "actualizado": "2026-08-27T15:52:50.968Z"
+  }
+},
+{
+  "model": "catalogo.favorito",
+  "pk": 4,
+  "fields": {
+    "usuario": [
+      "test1"
+    ],
+    "juego": 1,
+    "creado": "2026-08-27T17:09:37.840Z"
+  }
+},
+{
+  "model": "catalogo.favorito",
+  "pk": 6,
+  "fields": {
+    "usuario": [
+      "test1"
+    ],
+    "juego": 3,
+    "creado": "2026-08-27T17:11:51.689Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-08-18T03:41:05.549Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "10",
+    "object_repr": "Grand Theft Auto V",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-08-18T03:41:24.602Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "9",
+    "object_repr": "Minecraft",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-08-18T03:41:36.340Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "8",
+    "object_repr": "Resident Evil 4",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-08-18T03:41:45.135Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "7",
+    "object_repr": "Elden Ring",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-08-18T03:41:55.314Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "6",
+    "object_repr": "Red Dead Redemption 2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-08-18T03:42:05.930Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "5",
+    "object_repr": "Cyberpunk 2077",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-08-18T03:42:13.992Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "4",
+    "object_repr": "Hollow Knight",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-08-18T03:42:25.353Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "3",
+    "object_repr": "Forza Horizon 5",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-08-18T03:42:37.522Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "2",
+    "object_repr": "God of War Ragnar÷k",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-08-18T03:42:45.234Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "1",
+    "object_repr": "The Witcher 3: Wild Hunt",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-08-27T15:52:44.404Z",
+    "user": [
+      "franroy"
+    ],
+    "content_type": [
+      "catalogo",
+      "juego"
+    ],
+    "object_id": "3",
+    "object_repr": "Forza Horizon 5",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+  }
+}
+]

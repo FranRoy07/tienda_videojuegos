@@ -36,8 +36,7 @@ load_dotenv(ENV_FILE)
 # ---------------------------------------------------
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
-
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 # ---------------------------------------------------
 # Aplicaciones instaladas
 # ---------------------------------------------------
@@ -60,12 +59,14 @@ INSTALLED_APPS = [
 # ---------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 # ---------------------------------------------------
@@ -94,16 +95,28 @@ WSGI_APPLICATION = 'tienda_videojuegos.wsgi.application'
 # ---------------------------------------------------
 # Base de datos
 # ---------------------------------------------------
+DATABASE_ENGINE = os.getenv('DATABASE_ENGINE')
+
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'ENGINE': DATABASE_ENGINE,
         'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER', ''),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),
-        'HOST': os.getenv('DATABASE_HOST', ''),
-        'PORT': os.getenv('DATABASE_PORT', ''),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
+
+if DATABASE_ENGINE == 'django.db.backends.sqlite3':
+    database_name = DATABASES['default']['NAME'] or 'db.sqlite3'
+    if not os.path.isabs(database_name):
+        DATABASES['default']['NAME'] = BASE_DIR / database_name
+
+if DATABASE_ENGINE == 'django.db.backends.postgresql':
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+    }
 
 # ---------------------------------------------------
 # Validación de contraseñas
