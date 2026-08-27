@@ -37,7 +37,7 @@
   "model": "catalogo.juego",
   "pk": 2,
   "fields": {
-    "nombre": "God of War Ragnar÷k",
+    "nombre": "God of War Ragnarok",
     "precio": "69.99",
     "plataforma": "PlayStation 5",
     "imagen": "GOWR.jpg"
