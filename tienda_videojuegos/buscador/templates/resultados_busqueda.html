@@ -12,15 +12,24 @@
                 {% for juego in lista_juegos %} 
                     <div class="col-md-4 mb-3">
                         <div class="card h-100 shadow-sm">
-                            <a href="{% url 'detalle_juego' juego.id %}" class="text-decoration-none text body">
+                            <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-body">
                                 <img src="{% static 'img/portadas/'|add:juego.imagen %}" 
                                 class= "card-img-top" alt="{{ juego.nombre }}">
-                                <div class="card-body text-start">
+                            </a>    
+                            <div class="card-body position-relative text-start">
+                                <form method="post" action="{% url 'catalogo:alternar_favorito' juego.id %}" class="favorite-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                    <button type="submit" class="favorite-button {% if juego.id in favoritos_ids %}is-favorite{% endif %}" aria-label="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}" title="{% if juego.id in favoritos_ids %}Quitar de favoritos{% else %}Agregar a favoritos{% endif %}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </form>
+                                <a href="{% url 'catalogo:detalle_juego' juego.id %}" class="text-decoration-none text-body">
                                     <h5 class="card-title">{{ juego.nombre }}</h5>
                                     <p class="card-text">{{ juego.plataforma }}</p>
-                                    <p class="card-text fw-bold">{{ juego.precio }}</p>
-                                </div>
-                            </a>    
+                                    <p class="card-text fw-bold">${{ juego.precio }}</p>
+                                </a>
+                            </div>
                         </div>
                     </div>    
                 {% endfor %}
@@ -32,7 +41,7 @@
                 <ul class="pagination justify-content-center">
                         {% if lista_juegos.has_previous %}
                         <li class="page-item">
-                            <a class="page-link" href="?q= {{ query }}&page={{ lista_juegos.previous_page_number }}">Anterior</a>
+                            <a class="page-link" href="?q={{ query }}&page={{ lista_juegos.previous_page_number }}">Anterior</a>
                         </li>
 
                         {% else %}

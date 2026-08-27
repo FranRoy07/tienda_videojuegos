@@ -2,6 +2,7 @@ from django.shortcuts import render
 from catalogo.models import Juego
 from django.core.paginator import Paginator
 from django.db.models import Q
+from catalogo.models import Favorito
 
 # Create your views here.
 def buscar_juegos(request):
@@ -17,7 +18,11 @@ def buscar_juegos(request):
     
     contexto = {
         'query': query,
-        'lista_juegos': page_obj
+        'lista_juegos': page_obj,
+        'favoritos_ids': set(Favorito.objects.filter(
+            usuario=request.user,
+            juego__in=page_obj.object_list
+        ).values_list('juego_id', flat=True)) if request.user.is_authenticated else set(),
     }
 
     return render(request, 'resultados_busqueda.html', contexto)

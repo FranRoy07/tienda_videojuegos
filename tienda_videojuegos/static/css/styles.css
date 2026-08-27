@@ -756,6 +756,14 @@ footer i:hover {
     font-size: 2rem;
 }
 
+.home-empty-state .btn {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+}
+
 @media (max-width: 767px) {
     .home-hero {
         display: block;

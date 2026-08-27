@@ -117,7 +117,7 @@
                 {% if user.is_authenticated %}
                     <ul class="navbar-nav mb-2 mb-lg-0 order-6 order-lg-5 me-3">
                         <li class="nav-item position-relative">
-                            <a href="{% url 'catalogo:favoritos' %}" class="nav-link text-danger" aria-label="Mis favoritos" title="Mis favoritos">
+                            <a href="{% url 'catalogo:favoritos' %}" class="nav-link text-white" aria-label="Mis favoritos" title="Mis favoritos">
                                 <div class="position-relative d-inline-block">
                                     <i class="fas fa-heart fa-lg"></i>
                                     {% if favoritos_total > 0 %}
